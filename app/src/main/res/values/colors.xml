@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="black">#FF000000</color>
+    <color name="white">#FFFFFFFF</color>
+    <color name="message_background_sent">#DCF8C6</color> <!-- Light green for sent -->
+    <color name="message_background_received">#FFFFFF</color> <!-- White for received -->
+    <color name="sender_name_color">#888888</color> <!-- Gray for sender name -->
+    <color name="message_text_color">#000000</color> <!-- Black for message text -->
+    <color name="card_background">#FFFFFF</color> <!-- White or a subtle color -->
+    <color name="text_primary">#212121</color> <!-- Dark gray for primary text -->
+    <color name="text_secondary">#757575</color> <!-- Medium gray for secondary text -->
+    <color name="price_color">#FF5722</color> <!-- Orange or accent color for price -->
+    <color name="border_color">#E0E0E0</color> <!-- Light gray for image border -->
+
+        <color name="home_icon_color">#FF5722</color>        <!-- Home icon color -->
+        <color name="chat_icon_color">#2196F3</color>        <!-- Chat icon color -->
+        <color name="dashboard_icon_color">#4CAF50</color>   <!-- Dashboard icon color -->
+        <color name="profile_icon_color">#9C27B0</color>     <!-- Profile icon color -->
+
+
+
+</resources>

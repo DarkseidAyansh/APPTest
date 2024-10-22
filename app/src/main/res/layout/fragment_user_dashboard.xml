@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E0F7FA"
+    tools:context=".UserDashboardFragment">
+
+    <!-- Header Text for Organizations -->
+    <TextView
+        android:id="@+id/header_text"
+        android:layout_width="220dp"
+        android:layout_height="34dp"
+        android:layout_marginTop="24dp"
+        android:background="@color/white"
+        android:text="Shops And Events"
+        android:gravity="center"
+        android:textColor="#3DDC84"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <!-- Horizontal ScrollView for Events -->
+    <HorizontalScrollView
+        android:id="@+id/horizontal_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:background="@android:color/transparent"
+        android:padding="8dp"
+        android:scrollbars="none"
+        app:layout_constraintTop_toBottomOf="@id/header_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <!-- FrameLayout for Event 1 -->
+            <FrameLayout
+                android:layout_width="250dp"
+                android:layout_height="150dp"
+                android:layout_marginEnd="8dp">
+
+                <!-- ImageView for Event 1 Image -->
+                <ImageView
+                    android:id="@+id/event_1_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/cycle_image" />
+
+                <!-- TextView for Event 1 Title with Shadow -->
+                <TextView
+                    android:id="@+id/event_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:background="#80000000"
+                    android:gravity="center_vertical"
+                    android:padding="8dp"
+                    android:shadowColor="#000000"
+                    android:shadowDx="2"
+                    android:shadowDy="2"
+                    android:shadowRadius="4"
+                    android:text="EVENT 1"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+            </FrameLayout>
+
+            <!-- FrameLayout for Event 2 -->
+            <FrameLayout
+                android:layout_width="250dp"
+                android:layout_height="150dp"
+                android:layout_marginEnd="8dp">
+
+                <!-- ImageView for Event 2 Image -->
+                <ImageView
+                    android:id="@+id/event_2_image"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/cooler_image" />
+
+                <!-- TextView for Event 2 Title with Shadow -->
+                <TextView
+                    android:id="@+id/event_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="bottom"
+                    android:background="#80000000"
+                    android:gravity="center_vertical"
+                    android:padding="8dp"
+                    android:shadowColor="#000000"
+                    android:shadowDx="2"
+                    android:shadowDy="2"
+                    android:shadowRadius="4"
+                    android:text="EVENT 2"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+            </FrameLayout>
+
+        </LinearLayout>
+    </HorizontalScrollView>
+
+    <!-- RecyclerView for Organization List -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/organization_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:padding="8dp"
+        app:layout_constraintTop_toBottomOf="@id/horizontal_scroll"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        tools:listitem="@layout/item_organization" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

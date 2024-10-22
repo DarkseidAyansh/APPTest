@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <!-- Home Tab -->
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/ic_home"
+        android:title="@string/home"
+        android:iconTint="@color/home_icon_color" />
+
+    <!-- Chat Tab -->
+    <item
+        android:id="@+id/nav_chat"
+        android:icon="@drawable/ic_chat"
+        android:title="@string/chat"
+        android:iconTint="@color/chat_icon_color" />
+
+    <!-- Dashboard Tab -->
+    <item
+        android:id="@+id/nav_dashboard"
+        android:icon="@drawable/ic_dashboard"
+        android:title="@string/dashboard"
+        android:iconTint="@color/dashboard_icon_color" />
+
+    <!-- Profile Tab -->
+    <item
+        android:id="@+id/nav_profile"
+        android:icon="@drawable/ic_profile"
+        android:title="@string/profile"
+        android:iconTint="@color/profile_icon_color" />
+
+</menu>

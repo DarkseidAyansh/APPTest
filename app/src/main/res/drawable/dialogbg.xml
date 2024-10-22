@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <!-- Background color for the bottom sheet -->
+    <solid android:color="#FFFFFF" /> <!-- Change color as needed -->
+
+    <!-- Add corner radius for rounded corners -->
+    <corners android:topLeftRadius="16dp"
+        android:topRightRadius="16dp" />
+
+    <!-- Optional: Add padding for extra spacing inside the bottom sheet -->
+    <padding
+        android:left="8dp"
+        android:right="8dp"
+        android:top="8dp"
+        android:bottom="8dp" />
+
+    <!-- Optional: Add stroke for border -->
+    <stroke
+        android:width="1dp"
+        android:color="#DDDDDD" /> <!-- Change border color as needed -->
+</shape>

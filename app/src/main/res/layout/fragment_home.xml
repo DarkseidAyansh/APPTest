@@ -1,0 +1,247 @@
+<androidx.constraintlayout.motion.widget.MotionLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#E0F7FA"
+    app:layoutDescription="@xml/fragment_home_scene"
+    tools:context=".HomeFragment">
+
+
+    <ProgressBar
+        android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="250dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:padding="8dp"
+        android:indeterminate="true"
+        android:elevation="8dp"
+        android:progressDrawable="@android:drawable/progress_horizontal"
+        android:indeterminateTint="#3DDC84"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="24dp"
+        android:text="Categories"
+        android:visibility="visible"
+        android:textColor="#212121"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/search" />
+
+    <androidx.appcompat.widget.SearchView
+        android:id="@+id/search"
+        android:layout_width="0dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="24dp"
+        android:background="@drawable/searchview"
+        android:focusable="true"
+        android:focusableInTouchMode="true"
+        android:queryHint="Search Recipe"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView3" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="24dp"
+        android:text="What You are looking for?"
+        android:textColor="#212121"
+        android:textStyle="bold"
+        android:visibility="visible"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintLeft_toRightOf="@id/textView"
+        app:layout_constraintTop_toBottomOf="@id/textView" />
+
+    <TextView
+        android:id="@+id/username_home"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="18dp"
+        android:layout_marginBottom="8dp"
+        android:fontFamily="sans-serif-black"
+        android:text=""
+        android:visibility="visible"
+        android:textColor="#3DDC84"
+        android:textSize="28sp"
+        app:layout_constraintBottom_toBottomOf="@+id/textView"
+        app:layout_constraintStart_toEndOf="@+id/textView"
+        app:layout_constraintTop_toBottomOf="@+id/nav_drawer_icon" />
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="10dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Hello"
+        android:visibility="visible"
+        android:textColor="#212121"
+        android:textSize="28sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/nav_drawer_icon" />
+
+    <ImageView
+        android:id="@+id/nav_drawer_icon"
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:visibility="visible"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="20dp"
+        android:background="@drawable/card_back_btn"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/menu_home" />
+
+    <HorizontalScrollView
+        android:id="@+id/horizontalScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:scrollbars="none"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/textView4"
+        tools:ignore="SpeakableTextPresentCheck">
+
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="135dp"
+            android:orientation="vertical"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp"
+            tools:ignore="ScrollViewSize,VisualLintBounds">
+
+            <ImageView
+                android:id="@+id/books"
+                style="@style/my_style"
+                android:layout_marginRight="16dp"
+                android:background="@drawable/category_card_bc"
+                app:srcCompat="@drawable/book_image" />
+
+            <TextView
+                android:id="@+id/textView5"
+                style="@style/text_style"
+                android:layout_below="@id/books"
+                android:layout_alignStart="@id/books"
+                android:layout_alignEnd="@id/books"
+                android:text="Books"
+                android:textColor="#212121" />
+
+            <ImageView
+                android:id="@+id/cooler"
+                style="@style/my_style"
+                android:layout_marginRight="16dp"
+                android:layout_toRightOf="@id/books"
+                android:background="@drawable/category_card_bc"
+                app:srcCompat="@drawable/cooler_image" />
+
+            <TextView
+                android:id="@+id/textView7"
+                style="@style/text_style"
+                android:layout_below="@id/cooler"
+                android:layout_alignStart="@id/cooler"
+                android:layout_alignEnd="@id/cooler"
+                android:text="Coolers"
+                android:textColor="#212121" />
+
+            <ImageView
+                android:id="@+id/cycle"
+                style="@style/my_style"
+                android:layout_marginRight="16dp"
+                android:layout_toRightOf="@id/cooler"
+                android:background="@drawable/category_card_bc"
+                app:srcCompat="@drawable/cycle_image" />
+
+            <TextView
+                android:id="@+id/textView8"
+                style="@style/text_style"
+                android:layout_below="@id/cycle"
+                android:layout_alignStart="@id/cycle"
+                android:layout_alignEnd="@id/cycle"
+                android:text="Cycles"
+                android:textColor="#212121" />
+
+            <ImageView
+                android:id="@+id/laptop"
+                style="@style/my_style"
+                android:layout_marginRight="16dp"
+                android:layout_toRightOf="@id/cycle"
+                android:background="@drawable/category_card_bc"
+                app:srcCompat="@drawable/laptop_image" />
+
+            <TextView
+                android:id="@+id/textView9"
+                style="@style/text_style"
+                android:layout_below="@id/laptop"
+                android:layout_alignStart="@id/laptop"
+                android:layout_alignEnd="@id/laptop"
+                android:text="Laptops"
+                android:textColor="#212121" />
+
+            <ImageView
+                android:id="@+id/furniture"
+                style="@style/my_style"
+                android:layout_marginRight="16dp"
+                android:layout_toRightOf="@id/laptop"
+                android:background="@drawable/category_card_bc"
+                app:srcCompat="@drawable/furniture_image" />
+
+            <TextView
+                android:id="@+id/textView10"
+                style="@style/text_style"
+                android:layout_below="@id/furniture"
+                android:layout_alignStart="@id/furniture"
+                android:layout_alignEnd="@id/furniture"
+                android:text="Furniture"
+                android:textColor="#212121" />
+
+        </RelativeLayout>
+    </HorizontalScrollView>
+
+    <!-- RecyclerView for the list of books -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/book_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:padding="8dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/horizontalScrollView"
+        tools:listitem="@layout/item_book" />
+
+    <!-- Nothing Found Text -->
+    <TextView
+        android:id="@+id/nothing"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="NOTHING FOUND....."
+        android:textStyle="bold"
+        android:visibility="gone"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.47"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/book_recycler_view"
+        app:layout_constraintVertical_bias="0.037" />
+</androidx.constraintlayout.motion.widget.MotionLayout>
