@@ -30,4 +30,6 @@
         <item name="android:indeterminateTint">#80CBC4</item>
     </style>
 
+    <string name="default_web_client_id">774532772315-kieb1v8sdbqck38rb4bgmmjrbk932acm.apps.googleusercontent.com</string>
+
 </resources>

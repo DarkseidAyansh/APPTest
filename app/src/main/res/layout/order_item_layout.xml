@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="8dp"
+    app:cardElevation="4dp"
+    app:cardCornerRadius="8dp"
+    tools:context=".Vendor.CurrentOrderFragment">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- Order Title (Shop Name or Order Title) -->
+        <TextView
+            android:id="@+id/orderTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Order Title"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#333333" />
+
+        <!-- Order Description (Details of the Order) -->
+        <TextView
+            android:id="@+id/orderDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Order description goes here."
+            android:textSize="14sp"
+            android:textColor="#666666"
+            android:layout_marginTop="8dp"/>
+
+        <!-- Accept and Cancel buttons in a horizontal layout -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:layout_marginTop="16dp"
+            android:gravity="end">
+
+            <!-- Accept Button -->
+            <ImageButton
+                android:id="@+id/btnAccept"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_send"
+                android:contentDescription="Accept Order"
+                android:background="?android:attr/selectableItemBackgroundBorderless"
+                android:layout_marginEnd="16dp"/>
+
+            <!-- Cancel Button -->
+            <ImageButton
+                android:id="@+id/btnCancel"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/ic_clear"
+                android:contentDescription="Cancel Order"
+                android:background="?android:attr/selectableItemBackgroundBorderless"/>
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.cardview.widget.CardView>

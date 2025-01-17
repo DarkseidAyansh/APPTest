@@ -17,6 +17,9 @@
         <color name="dashboard_icon_color">#4CAF50</color>   <!-- Dashboard icon color -->
         <color name="profile_icon_color">#9C27B0</color>     <!-- Profile icon color -->
 
+    <color name="theme_color">#6200EE</color> <!-- Replace with your desired theme color -->
+    <color name="gray">#DDDDDD</color>
+
 
 
 </resources>

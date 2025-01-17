@@ -1,5 +1,7 @@
 package com.example.bookrentapp
 
+import android.content.Context
+import android.content.SharedPreferences
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
@@ -36,6 +38,8 @@ class HomeFragment : Fragment() {
     private var selectedCategory: String? = null
     private lateinit var usernameTextView: TextView
 
+    private lateinit var sharedPreferences: SharedPreferences
+
     private var auth = FirebaseAuth.getInstance()
     private var currentUserId = auth.currentUser?.uid.toString()
 
@@ -51,8 +55,11 @@ class HomeFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        database = FirebaseDatabase.getInstance().reference
+        // Initialize sharedPreferences
+        sharedPreferences = requireActivity().getSharedPreferences("UserPrefs", Context.MODE_PRIVATE)
 
+        // Initialize Firebase Database and RecyclerView
+        database = FirebaseDatabase.getInstance().reference
         recyclerView = view.findViewById(R.id.book_recycler_view)
         recyclerView.layoutManager = GridLayoutManager(context, 2)
         bookAdapter = BookAdapter(books)
@@ -79,8 +86,15 @@ class HomeFragment : Fragment() {
 
         usernameTextView = view.findViewById(R.id.username_home)
 
-        fetchUsername(currentUserId) { username ->
-            usernameTextView.text = username
+        val savedUsername = sharedPreferences.getString("username", null)
+
+        if (savedUsername != null) {
+            usernameTextView.text = savedUsername
+        } else {
+            fetchUsername(currentUserId) { username ->
+                usernameTextView.text = username
+                sharedPreferences.edit().putString("username", username).apply()
+            }
         }
 
         progressBar = view.findViewById(R.id.progressBar)
@@ -90,6 +104,7 @@ class HomeFragment : Fragment() {
         // Setup category click listeners (Assuming you have TextViews or Buttons for categories)
         setupCategoryListeners(view)
     }
+
 
     private fun updateCategoryBackground(it: String) {
 

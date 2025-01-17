@@ -49,19 +49,25 @@ class ChatFragment : Fragment() {
     }
 
     private fun loadChatSummaries() {
+        val sellerChatSummaries = mutableListOf<ChatSummary>()
+        val buyerChatSummaries = mutableListOf<ChatSummary>()
+        chatSummaries.clear() // Clear global chat summaries before reloading
+
+        // Load seller chat summaries
         database.child("chats").child(currentUserId).addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
-                chatSummaries.clear() // Clear existing summaries
+                sellerChatSummaries.clear()
                 for (data in snapshot.children) {
                     val sellerId = data.key ?: ""
                     val lastMessageData = data.child("message").getValue(String::class.java) ?: ""
                     val bookId = data.child("bookId").getValue(String::class.java) ?: ""
 
-                    val chatSummary = ChatSummary(sellerId,currentUserId, bookId, lastMessageData)
-                    chatSummaries.add(0,chatSummary)
+                    val chatSummary = ChatSummary(sellerId, currentUserId, bookId, lastMessageData)
+                    sellerChatSummaries.add(0,chatSummary)
                 }
-                chatSummaryAdapter= ChatSummaryAdapter(chatSummaries)
-                chatSummaryRecyclerView.adapter = chatSummaryAdapter// Notify adapter of data change
+
+                // Merge with buyer summaries
+                updateGlobalChatSummaries(sellerChatSummaries, buyerChatSummaries)
             }
 
             override fun onCancelled(error: DatabaseError) {
@@ -69,37 +75,46 @@ class ChatFragment : Fragment() {
             }
         })
 
-        database.child("chats").addListenerForSingleValueEvent(object : ValueEventListener {
-            override fun onDataChange(snapshot: DataSnapshot) { // Clear existing summaries at the start
-
-                for (chatSessionSnapshot in snapshot.children) { // This is the unique chat session
-                    if(chatSessionSnapshot.key==currentUserId) continue
-                    for (userSnapshot in chatSessionSnapshot.children) { // Represents currentUserId
+        // Load buyer chat summaries
+        database.child("chats").addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(snapshot: DataSnapshot) {
+                buyerChatSummaries.clear()
+                for (chatSessionSnapshot in snapshot.children) {
+                    if (chatSessionSnapshot.key == currentUserId) continue
+                    for (userSnapshot in chatSessionSnapshot.children) {
                         val userId = userSnapshot.key ?: ""
-                        if (userId == currentUserId) { // Check if this user is the current user
-                            // Get the last message and associated book ID
+                        if (userId == currentUserId) {
                             val lastMessageData = userSnapshot.child("message").getValue(String::class.java) ?: ""
                             val bookId = userSnapshot.child("bookId").getValue(String::class.java) ?: ""
 
-                            // Create a chat summary using the chat session ID
-                            val chatSummary = ChatSummary(userId,chatSessionSnapshot.key ?: "", bookId, lastMessageData)
-                            chatSummaries.add(0, chatSummary) // Add the new summary to the beginning of the list
+                            val chatSummary = ChatSummary(userId, chatSessionSnapshot.key ?: "", bookId, lastMessageData)
+                            buyerChatSummaries.add(0,chatSummary)
                         }
                     }
                 }
 
-                // Notify adapter of data change after processing all chat summaries
-                chatSummaryAdapter=ChatSummaryAdapter(chatSummaries)
-                chatSummaryRecyclerView.adapter=chatSummaryAdapter
+                // Merge with seller summaries
+                updateGlobalChatSummaries(sellerChatSummaries, buyerChatSummaries)
             }
 
             override fun onCancelled(error: DatabaseError) {
                 Toast.makeText(context, "Error: ${error.message}", Toast.LENGTH_SHORT).show()
             }
         })
-
-
     }
 
-    // Function to get username based on user ID
+    // Helper function to update global chat summaries and refresh the adapter
+    private fun updateGlobalChatSummaries(
+        sellerChatSummaries: List<ChatSummary>,
+        buyerChatSummaries: List<ChatSummary>
+    ) {
+        chatSummaries.clear() // Clear global chat summaries
+        chatSummaries.addAll(sellerChatSummaries)
+        chatSummaries.addAll(buyerChatSummaries)
+
+        // Notify adapter of the updated data
+        chatSummaryRecyclerView.adapter=ChatSummaryAdapter(chatSummaries)
+    }
+
+
 }

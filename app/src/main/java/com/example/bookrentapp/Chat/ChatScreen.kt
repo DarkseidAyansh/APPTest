@@ -24,6 +24,7 @@ class ChatScreen : AppCompatActivity() {
     private lateinit var sellerId: String
     private lateinit var bookId: String
     private lateinit var buyerId: String
+    private lateinit var  profilePicRef: DatabaseReference
     private val chatMessages = mutableListOf<ChatMessage>()
     private lateinit var chatAdapter: ChatMessageAdapter
     private var currentUserId = auth.currentUser?.uid.toString()
@@ -42,6 +43,8 @@ class ChatScreen : AppCompatActivity() {
         bookId = intent.getStringExtra("BOOK_ID") ?: ""
         buyerId=intent.getStringExtra("BUYER_ID")?:""
 
+        val profileImage: ImageView = findViewById(R.id.seller_profile_image)
+
         if (sellerId == currentUserId) {
             currentUserId=buyerId
             val sellerNameTextView: TextView = findViewById(R.id.seller_name)
@@ -51,6 +54,7 @@ class ChatScreen : AppCompatActivity() {
                 tagTextView.text="BUYER"
                 tagTextView.setBackgroundResource(R.color.message_background_sent)// Show buyer's name
             }
+            loadProfileImage(profileImage,buyerId)
 
         } else {
             // Buyer is chatting, so display the seller's name
@@ -60,6 +64,7 @@ class ChatScreen : AppCompatActivity() {
                 sellerNameTextView.text = "$username "
                 tagTextView.text = "SELLER"
             }
+            loadProfileImage(profileImage,sellerId)
         }
 
 
@@ -74,8 +79,7 @@ class ChatScreen : AppCompatActivity() {
                 sendMessage(message)
             }
         }
-        val profileImage: ImageView = findViewById(R.id.seller_profile_image)
-        loadProfileImage(profileImage)
+
 
         listenForMessages()
     }
@@ -109,7 +113,7 @@ class ChatScreen : AppCompatActivity() {
     }
 
     private fun listenForMessages() {
-        // Listen for messages under the path for the specific buyer-seller chat
+
         val chatPath = "$currentUserId $sellerId"
         database.child("chats").child(chatPath).addValueEventListener(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {
@@ -144,8 +148,8 @@ class ChatScreen : AppCompatActivity() {
         })
     }
 
-    private fun loadProfileImage(profileImage: ImageView) {
-        val profilePicRef = database.child("users").child(sellerId).child("profile_pic")
+    private fun loadProfileImage(profileImage: ImageView,id:String) {
+        profilePicRef = database.child("users").child(id).child("profile_pic")
 
         profilePicRef.addListenerForSingleValueEvent(object : ValueEventListener {
             override fun onDataChange(snapshot: DataSnapshot) {

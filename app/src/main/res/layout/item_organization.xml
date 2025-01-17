@@ -39,6 +39,16 @@
             android:text="Organization Description"
             android:textColor="@color/black"
             android:textSize="16sp" />
-
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/org_status"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Closed"
+        android:fontFamily="monospace"
+        style="@style/my_style"
+        android:textStyle="bold"
+        android:layout_gravity="end"
+        android:layout_margin="8dp" />
 </androidx.cardview.widget.CardView>

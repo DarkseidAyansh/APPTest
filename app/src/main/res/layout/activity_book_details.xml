@@ -11,17 +11,17 @@
     <!-- Container for Book Details -->
     <LinearLayout
         android:id="@+id/book_container"
+        style="@style/my_style"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:orientation="vertical"
-        style="@style/my_style"
-        android:backgroundTint="#E0F7FA"
-        android:layout_margin="16dp"
-        android:background="@drawable/category_card_bc"
-        android:elevation="8dp"
-        android:padding="16dp"
         android:layout_gravity="center"
+        android:layout_margin="16dp"
         android:layout_marginTop="16dp"
+        android:background="@drawable/category_card_bc"
+        android:backgroundTint="#E0F7FA"
+        android:elevation="8dp"
+        android:orientation="vertical"
+        android:padding="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
@@ -29,13 +29,13 @@
         <!-- Book Cover Image -->
         <ImageView
             android:id="@+id/book_cover"
+            style="@style/my_style"
             android:layout_width="match_parent"
             android:layout_height="200dp"
             android:layout_marginBottom="16dp"
-            android:scaleType="centerCrop"
-            style="@style/my_style"
-            android:clipToOutline="true"
             android:background="@drawable/category_card_bc"
+            android:clipToOutline="true"
+            android:scaleType="centerCrop"
             android:src="@drawable/book_image" />
 
         <!-- Book Title -->
@@ -71,34 +71,37 @@
             android:textStyle="bold" />
     </LinearLayout>
 
-    <!-- Rent Now Button -->
     <Button
         android:id="@+id/buy_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
         android:layout_marginBottom="16dp"
+        android:backgroundTint="#3DDC84"
         android:text="Buy"
-        android:textColor="#9D1F1F"
-        android:backgroundTint="#E0F7FA"
-        app:layout_constraintTop_toBottomOf="@id/book_container"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
+        android:textColor="#FFFFFF"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHeight_percent="0.4"
+        app:layout_constraintHorizontal_bias="0.285"
+        app:layout_constraintStart_toEndOf="@+id/chat_with_seller_button"
+        app:layout_constraintWidth_percent="0.4" />
 
-    <!-- Chat with Seller Button -->
     <Button
         android:id="@+id/chat_with_seller_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="16dp"
-        android:layout_marginStart="16dp"
+        android:layout_marginStart="32dp"
+        android:backgroundTint="#FFFFFF"
         android:text="Chat with Seller"
         android:textColor="#3DDC84"
-        android:backgroundTint="#E0F7FA"
-        app:layout_constraintTop_toBottomOf="@id/buy_button"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"/>
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintHeight_percent="0.4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/buy_button"
+        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintWidth_percent="0.4" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,4 +1,10 @@
 package com.example.bookrentapp.Dashboard
 
-class Organization(val name: String, val description: String)
+data class Organization(
+    val shopName: String = "",
+    val ownerName: String = "",
+    val shopType: String = "",
+    val ownerId: String = "",
+    val status: String = ""
+)
 
